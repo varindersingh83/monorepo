@@ -1,0 +1,89 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Poetsen+One&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+    height: 100vh; /* Ensures the full viewport height is used */
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+    box-sizing: border-box; /* Includes padding and borders in all elements' size calculations */
+}
+
+* {
+    box-sizing: inherit; /* Ensures all elements inherit box-sizing */
+}
+
+/* Top section */
+.top-section {
+    background-color: #EF5253;
+    height: 50vh; /* Uses 50% of the viewport height */
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Changes layout to vertical stack */
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    padding: 20px; /* Adds padding for better spacing */
+}
+
+/* Bottom section */
+.bottom-section {
+  background-color: #FDFADF;
+  height: 50vh; /* Uses 50% of the viewport height */
+  width: 100%;
+  display: flex;
+  justify-content: space-around; /* Distributes space evenly around the items */
+  align-items: center; /* Vertically centers the items */
+  font-size: 24px;
+}
+
+/* Specific text styles */
+.name {
+  font-family: 'Poetsen One', sans-serif;
+  color: #FDFADF;  /* Sets the text color */
+  width: 100%;  /* Sets the width to 100% of its parent container */
+  text-align: center; /* Center-aligns the text within the element */
+  margin: auto; /* Automatically adjusts margin for centering horizontally */
+  padding: 20px; /* Adds padding inside the element, adjusting height */
+}
+
+.visitor, .visitor-wrapper {
+    font-family: 'Briem Hand', sans-serif;  /* Updated to Briem Hand */
+    margin-right: 10px;
+}
+
+.greeting, .links {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.number {
+    font-family: 'Poetsen One', sans-serif;
+    color: blue;
+}
+
+.visitor-wrapper {
+  display: flex;
+  align-items: center;  /* Align vertically */
+  justify-content: center; /* Center horizontally within the container */
+}
+
+.icon-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  /* Style your icons here */
+  width: 45px;
+  height: 45px;
+  font-size: 32px;  
+  margin-bottom: 10px; 
+}
+
+.links {
+  text-align: center;
+  margin: 0;          /* Removes any default margin */
+  padding: 0;         /* Removes any default padding */
+}

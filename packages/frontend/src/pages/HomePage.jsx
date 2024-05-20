@@ -1,28 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import IconText from '../components/IconText';
-import VisitorCounter from '../components/VisitorCounter';
-import blogIcon from '../assets/blog-icon.png';
-import projectsIcon from '../assets/projects-icon.png';
-import amaIcon from '../assets/ama-icon.png';
+import '../styles/homePage.css';
 
-function HomePage() {
-    return (
-        <div>
-            <div className="top-section">
-                <p className="name">VARINDER SINGH</p>
-                <div className="visitor-wrapper">
-                    <p className="visitor">Hello Visitor #</p>
-                    <VisitorCounter />
-                </div>
-            </div>
-            <div className="bottom-section">
-                <Link to="/blog"><IconText icon={blogIcon} text="Blog" /></Link>
-                <Link to="/projects"><IconText icon={projectsIcon} text="Projects" /></Link>
-                <Link to="/ama"><IconText icon={amaIcon} text="Ask me Anything" /></Link>
-            </div>
+const HomePage = () => {
+  return (
+    <div className="home-page">
+      <header className="header">
+        <nav>
+          <ul>
+            <li><Link to="/blog">Blog</Link></li>
+            <li><Link to="/projects">Projects</Link></li>
+            <li><Link to="/contact">Contact me</Link></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <div className="top-rectangle"></div>
+      <div className="bottom-rectangle"></div>
+      
+      <div className="outer-border">
+        <div className="center-container">
+          <h1>Varinder Singh</h1>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default HomePage;

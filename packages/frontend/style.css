@@ -16,7 +16,7 @@ html, body {
 
 /* Top section */
 .top-section {
-    background-color: #EF5253;
+    background-color: #FA8072;
     height: 50vh; /* Uses 50% of the viewport height */
     width: 100%;
     display: flex;
@@ -29,7 +29,7 @@ html, body {
 
 /* Bottom section */
 .bottom-section {
-  background-color: #FDFADF;
+  background-color: #FFF8DC;
   height: 50vh; /* Uses 50% of the viewport height */
   width: 100%;
   display: flex;
@@ -41,7 +41,7 @@ html, body {
 /* Specific text styles */
 .name {
   font-family: 'Poetsen One', sans-serif;
-  color: #FDFADF;  /* Sets the text color */
+  color: #FFF8DC;  /* Sets the text color */
   width: 100%;  /* Sets the width to 100% of its parent container */
   text-align: center; /* Center-aligns the text within the element */
   margin: auto; /* Automatically adjusts margin for centering horizontally */

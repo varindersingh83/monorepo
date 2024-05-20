@@ -1,0 +1,55 @@
+/* blogStyles.css */
+:root {
+    --space-md: 16px; 
+    --text-xs: 16px; 
+}
+
+.blog-page {
+    background-color: #FA8072; /* Red background for the entire blog page */
+    min-height: 100vh; /* Full height */
+    font-family: 'Work Sans', sans-serif; /* Using 'Work Sans' font throughout the page */
+    color: #FFF8DC; /* Light yellow text color */
+    padding: 0 300px; /* 300px padding on both sides to center content */
+    box-sizing: border-box; /* Ensures padding is included in width calculations */
+}
+
+.blog-nav {
+    text-align: left; /* Aligns navigation text to the left */
+    padding: var(--space-md) 0; /* Padding top and bottom for the nav bar */
+}
+
+.home-link, .blog-text {
+    text-decoration: none; /* Removes underline from link */
+    color: #FFF8DC; /* Sets link color */
+    font-size: var(--text-xs); /* Updated font size for visibility */
+    font-weight: normal; /* Normal font weight for consistency */
+}
+
+.blog-content {
+    text-align: left; /* Aligns blog content text to the left */
+}
+
+.blog-content h1 {
+    margin-top: 100px; /* Adds 100px top margin to the 'Blog' headline */
+    margin-bottom: var(--space-md); /* Maintains some spacing below the headline */
+}
+
+.blog-list {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+    font-size: 16px; /* Font size for list items */
+}
+
+.blog-list li {
+    margin-top: 20px; /* Space between list items */
+}
+
+.blog-list li a {
+    color: #FFF8DC; /* Sets the color for links in the list */
+    text-decoration: none; /* Removes underline from links */
+}
+
+.article {
+    margin-top: var(--space-md); /* Adds spacing between the title and the article body */
+}

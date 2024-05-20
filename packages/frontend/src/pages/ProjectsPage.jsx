@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_PROJECTS } from '../queries';
 import '../styles/projectsPage.css';
@@ -11,6 +12,9 @@ const ProjectsPage = () => {
 
     return (
         <div className="projects-page">
+            <nav className="project-nav">
+                <Link to="/" className="home-link">@VarinderSingh</Link>
+            </nav>
             <h1>Projects</h1>
             <div className="projects-grid">
                 {data.getAllProjects.map(project => (

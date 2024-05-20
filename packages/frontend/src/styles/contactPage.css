@@ -28,7 +28,7 @@ body {
 }
 
 .home-link {
-    color: #FFF8DC;
+    color: #fae9e5;
     text-decoration: none;
     font-weight: bold;
 }
@@ -101,7 +101,7 @@ body {
 
 .contact-form button {
     background-color: #FA8072;
-    color: #FFF8DC;
+    color: #fae9e5;
     border: none;
     padding: 0.75rem;
     border-radius: 5px;

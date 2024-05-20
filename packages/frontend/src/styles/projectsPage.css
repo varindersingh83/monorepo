@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaini+Purva:wght@400;700&display=swap');
+
 .projects-page {
     text-align: center;
     padding: 20px;
+    font-family: 'Work Sans', sans-serif;
+    background-color: #fae9e5; /* Updated background color for the entire projects page */
+}
+
+.projects-page h1 {
+    font-family: 'Jaini Purva', sans-serif; /* Set font family for h1 */
 }
 
 .projects-grid {
@@ -10,6 +19,8 @@
 }
 
 .project-card {
+    background-color: #FA8072; /* Set background color for project cards */
+    color: #fae9e5; /* Set text color for project cards */
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
@@ -29,9 +40,42 @@
 .project-card h2 {
     font-size: 1.5em;
     margin: 10px 0;
+    color: #fae9e5; /* Set color for h2 text */
+    font-family: 'Jaini Purva', sans-serif; /* Set font family for h2 */
+}
+
+.project-card a {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Ensure the link inherits the text color from the parent */
+}
+
+.project-card a h2 {
+    color: #fae9e5; /* Ensure h2 inside link has the correct color */
 }
 
 .project-card p {
     font-size: 1em;
-    color: #666;
+    color: #fae9e5; /* Set color for paragraph text */
+}
+
+.project-nav {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 300px;
+    margin-top: 20px;
+    text-align: left;
+    background-color: #fae9e5; /* Updated background color for the navbar */
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.projects-page .home-link {
+    color: black !important; /* Ensure the link color is black for projects page */
+    text-decoration: none;
+}
+
+.projects-page .home-link:hover {
+    text-decoration: underline;
 }

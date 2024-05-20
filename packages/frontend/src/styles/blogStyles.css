@@ -1,4 +1,5 @@
-/* blogStyles.css */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+
 :root {
     --space-md: 16px; 
     --text-xs: 16px; 
@@ -8,7 +9,7 @@
     background-color: #FA8072; /* Red background for the entire blog page */
     min-height: 100vh; /* Full height */
     font-family: 'Work Sans', sans-serif; /* Using 'Work Sans' font throughout the page */
-    color: #FFF8DC; /* Light yellow text color */
+    color: #fae9e5; /* Light yellow text color */
     padding: 0 300px; /* 300px padding on both sides to center content */
     box-sizing: border-box; /* Ensures padding is included in width calculations */
 }
@@ -18,11 +19,11 @@
     padding: var(--space-md) 0; /* Padding top and bottom for the nav bar */
 }
 
-.home-link, .blog-text {
+.blog-page .home-link {
     text-decoration: none; /* Removes underline from link */
-    color: #FFF8DC; /* Sets link color */
+    color: #fae9e5 !important; /* Sets link color and uses !important to ensure it is applied */
     font-size: var(--text-xs); /* Updated font size for visibility */
-    font-weight: normal; /* Normal font weight for consistency */
+    font-weight: bold; /* Normal font weight for consistency */
 }
 
 .blog-content {
@@ -46,7 +47,7 @@
 }
 
 .blog-list li a {
-    color: #FFF8DC; /* Sets the color for links in the list */
+    color: #fae9e5; /* Sets the color for links in the list */
     text-decoration: none; /* Removes underline from links */
 }
 

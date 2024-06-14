@@ -16,7 +16,11 @@ const resolvers = {
             return count ? count.count : 0;
         },
         getAllBlogPosts: async () => {
-            const blogPosts = await prisma.blogPost.findMany();
+            const blogPosts = await prisma.blogPost.findMany({
+                orderBy: {
+                    date: 'desc',
+                },
+            });
             return blogPosts;
         },
         getBlogPost: async (_, { slug }) => {

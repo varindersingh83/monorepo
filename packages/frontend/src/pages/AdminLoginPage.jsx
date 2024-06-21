@@ -1,9 +1,14 @@
+// packages/frontend/src/pages/AdminLoginPage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { jwtDecode } from 'jwt-decode'; // Use named import
 import '../styles/adminLoginPage.css';
 
 const AdminLoginPage = () => {
     const navigate = useNavigate();
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,8 +28,18 @@ const AdminLoginPage = () => {
             });
 
             if (response.ok) {
-                console.log('Login successful');
-                navigate('/admin_dashboard');
+                const data = await response.json();
+                const { token } = data;
+                localStorage.setItem('token', token);
+
+                try {
+                    const decodedUser = jwtDecode(token);
+                    setUser(decodedUser);
+                    console.log('Login successful');
+                    navigate('/blog');
+                } catch (error) {
+                    console.error('Error decoding token:', error);
+                }
             } else {
                 console.log('Login failed');
                 navigate('/admin');

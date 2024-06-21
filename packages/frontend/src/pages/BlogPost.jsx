@@ -5,7 +5,7 @@ import { GET_BLOG_POST } from '../queries'; // Ensure the path is correct
 import '../styles/blogStyles.css';
 
 function BlogPost() {
-    const { slug } = useParams();
+    const { slug } = useParams(); // Ensure this matches the query parameter
     const { loading, error, data } = useQuery(GET_BLOG_POST, { variables: { slug } });
 
     if (loading) return <div>Loading...</div>;

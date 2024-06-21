@@ -12,13 +12,14 @@ const { resolvers } = require('./src/graphql/resolvers');
 const routes = require('./src/routes');
 const passport = require('./src/utils/passportConfig');
 const path = require('path');
+const logger = require('./src/utils/logger');
+const authenticate = require('./src/middlewares/auth'); // Import the authentication middleware
 
 dotenv.config();
 
 const app = express();
 const prisma = new PrismaClient();
 
-// Middleware
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(cors());
@@ -42,19 +43,24 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+app.use(authenticate); // Apply the authentication middleware
+
 app.use(routes);
 
-// Heartbeat route
 app.get('/heartbeat', (req, res) => {
+    logger.info('Heartbeat check');
     res.status(200).json({ status: 'Server is running' });
 });
 
-// Serve static files
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 
-// GraphQL Server
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: ({ req }) => ({
+        user: req.user,
+    }),
+});
 
 async function startServer() {
     await server.start();
@@ -62,7 +68,7 @@ async function startServer() {
 
     const PORT = process.env.PORT || 4000;
     app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}${server.graphqlPath}`);
+        logger.info(`Server is running on http://localhost:${PORT}${server.graphqlPath}`);
     });
 }
 

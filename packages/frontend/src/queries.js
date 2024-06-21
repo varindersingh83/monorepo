@@ -11,27 +11,48 @@ export const INCREMENT_VISIT_COUNT = gql`
     incrementVisitCount
   }
 `;
+
 export const ADD_BLOG_POST = gql`
-    mutation AddBlogPost($slug: String!, $title: String!, $date: String!, $body: String!) {
-        addBlogPost(slug: $slug, title: $title, date: $date, body: $body) {
-            id
-            slug
-            title
-            date
-            body
-        }
+  mutation AddBlogPost($slug: String!, $title: String!, $date: String!, $body: String!) {
+    addBlogPost(slug: $slug, title: $title, date: $date, body: $body) {
+      id
+      slug
+      title
+      date
+      body
     }
+  }
+`;
+
+export const UPDATE_BLOG_POST = gql`
+  mutation UpdateBlogPost($id: Int!, $slug: String!, $title: String!, $date: String!, $body: String!) {
+    updateBlogPost(id: $id, slug: $slug, title: $title, date: $date, body: $body) {
+      id
+      slug
+      title
+      date
+      body
+    }
+  }
+`;
+
+export const DELETE_BLOG_POST = gql`
+  mutation DeleteBlogPost($id: Int!) {
+    deleteBlogPost(id: $id) {
+      id
+    }
+  }
 `;
 
 export const GET_ALL_BLOG_POSTS = gql`
-    query GetAllBlogPosts {
-        getAllBlogPosts {
-            id
-            slug
-            date
-            title
-        }
+  query GetAllBlogPosts {
+    getAllBlogPosts {
+      id
+      slug
+      date
+      title
     }
+  }
 `;
 
 export const GET_BLOG_POST = gql`
@@ -54,5 +75,12 @@ export const GET_ALL_PROJECTS = gql`
       imageUrl
       projectUrl
     }
+  }
+`;
+
+// New mutation for deleting all sessions
+export const DELETE_ALL_SESSIONS = gql`
+  mutation DeleteAllSessions {
+    deleteAllSessions
   }
 `;

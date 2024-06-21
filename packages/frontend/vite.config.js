@@ -6,6 +6,9 @@ export default defineConfig({
   build: {
     outDir: 'dist', // Ensure the output directory is set to 'dist'
     assetsDir: 'assets', // Ensure assets are placed in 'assets' directory
+    rollupOptions: {
+      external: ['jwt-decode'] // Add jwt-decode as an external module
+    }
   },
   server: {
     proxy: {
@@ -17,4 +20,3 @@ export default defineConfig({
     }
   }
 });
-

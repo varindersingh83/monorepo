@@ -1,25 +1,53 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { ADD_BLOG_POST } from '../queries'; // Ensure the path is correct
-import '../styles/adminLoginPage.css'; // Corrected import path
+import React, { useState, useEffect } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_BLOG_POST, UPDATE_BLOG_POST, GET_BLOG_POST } from '../queries';
+import { useParams, useNavigate } from 'react-router-dom'; // Updated import
+import { toast } from 'react-toastify';
+import '../styles/adminLoginPage.css';
+import { nanoid } from 'nanoid'; // Import nanoid to generate unique IDs
 
 const AddBlogPage = () => {
-    const navigate = useNavigate();
-    const [title, setTitle] = useState('');
-    const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-    const [body, setBody] = useState('');
+    const { id } = useParams();
+    const navigate = useNavigate(); // Updated usage
+    const [formData, setFormData] = useState({ slug: '', title: '', date: '', body: '' });
+    const { loading, data } = useQuery(GET_BLOG_POST, { variables: { slug: id }, skip: !id });
+
     const [addBlogPost] = useMutation(ADD_BLOG_POST);
+    const [updateBlogPost] = useMutation(UPDATE_BLOG_POST);
 
-    const generateSlug = (title) => {
-        return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    useEffect(() => {
+        if (data) {
+            setFormData(data.getBlogPost);
+        }
+    }, [data]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSave = async () => {
-        const slug = generateSlug(title);
-        await addBlogPost({ variables: { slug, title, date, body } });
-        navigate('/blog');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // Generate a unique slug if it is empty
+            if (!formData.slug) {
+                formData.slug = nanoid();
+            }
+
+            if (id) {
+                await updateBlogPost({ variables: { ...formData, id: parseInt(id) } });
+                toast.success('Blog post updated successfully!');
+            } else {
+                await addBlogPost({ variables: formData });
+                toast.success('Blog post added successfully!');
+            }
+            navigate('/blog'); // Updated usage
+        } catch (err) {
+            toast.error('Failed to save blog post.');
+        }
     };
+
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div className="admin-container">
@@ -27,35 +55,35 @@ const AddBlogPage = () => {
                 <a href="/" className="home-link">Home</a>
             </nav>
             <div className="form-wrapper">
-                <form className="admin-form">
-                    <h1>Add Blog Post</h1>
+                <form className="admin-form" onSubmit={handleSubmit}>
+                    <h1>{id ? 'Edit' : 'Add'} Blog Post</h1>
                     <label>
                         Title:
                         <input
                             type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            name="title"
+                            value={formData.title}
+                            onChange={handleChange}
                         />
                     </label>
-                    <br />
                     <label>
                         Date:
                         <input
                             type="date"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
+                            name="date"
+                            value={formData.date}
+                            onChange={handleChange}
                         />
                     </label>
-                    <br />
                     <label>
                         Body:
                         <textarea
-                            value={body}
-                            onChange={(e) => setBody(e.target.value)}
+                            name="body"
+                            value={formData.body}
+                            onChange={handleChange}
                         />
                     </label>
-                    <br />
-                    <button type="button" onClick={handleSave}>Save</button>
+                    <button type="submit">{id ? 'Update' : 'Add'} Blog Post</button>
                 </form>
             </div>
         </div>

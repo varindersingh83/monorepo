@@ -16,7 +16,10 @@ const typeDefs = gql`
     deleteUser(id: Int!): User
     incrementVisitCount: Int!
     addBlogPost(slug: String!, title: String!, date: String!, body: String!): BlogPost!
+    updateBlogPost(id: Int!, title: String, date: String, body: String): BlogPost!
+    deleteBlogPost(id: Int!): BlogPost!
     submitContactForm(name: String!, email: String!, message: String!): ContactFormResponse!
+    deleteAllSessions: Boolean
   }
 
   type User {
